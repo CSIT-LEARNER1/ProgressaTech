@@ -1,0 +1,128 @@
+/* Chrome-optimized base styles */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --gray-100: #f8f8f8;
+    --gray-300: #e0e0e0;
+    --gray-500: #9e9e9e;
+    --gray-700: #616161;
+    --gray-900: #212121;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --max-content-width: 1280px;
+}
+
+* {
+    margin: 0 0 0 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 18px; /* Larger base for PC */
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    background: var(--white);
+}
+
+body {
+    background-color: var(--white);
+    color: var(--black);
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 100vw;
+}
+
+.main-content,
+.container,
+.responsive-container {
+    max-width: var(--max-content-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    width: 100%;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+button {
+    cursor: pointer;
+    font: inherit;
+    background: transparent;
+    border: none;
+}
+
+/* Chrome scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gray-500);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gray-700);
+}
+
+/* Responsive typography and layout */
+@media (max-width: 1200px) {
+    html {
+        font-size: 16px;
+    }
+    .main-content,
+    .container,
+    .responsive-container {
+        max-width: 98vw;
+        padding-left: 1vw;
+        padding-right: 1vw;
+    }
+}
+
+@media (max-width: 900px) {
+    html {
+        font-size: 15px;
+    }
+    .main-content,
+    .container,
+    .responsive-container {
+        padding-left: 0.5vw;
+        padding-right: 0.5vw;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 14px;
+    }
+    .main-content,
+    .container,
+    .responsive-container {
+        max-width: 100vw;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+}
