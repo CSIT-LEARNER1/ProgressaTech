@@ -1,0 +1,189 @@
+* {
+    color: inherit;
+    background: none;
+    background-color: transparent;
+    border-color: currentColor;
+    box-shadow: none;
+    text-decoration: none;
+    outline: none;
+}
+
+:root {
+    --navbar-height: 72px;
+    --transition-speed: 0.28s;
+    --navbar-background: linear-gradient(135deg, #000000 0%, #111111 100%);
+    --navbar-text-color: #f5f5f5;
+    --navbar-hover-color: #ffffff;
+    --navbar-active-bg: #111111;
+    --navbar-border: #111111;
+    --dropdown-bg: linear-gradient(135deg, #000000 0%, #111111 100%);
+    --dropdown-hover-bg: #111111;
+    --dropdown-border: #111111;
+    --shadow: 0 4px 16px 0 rgba(0,0,0,0.38), 0 1.5px 4px 0 rgba(0,0,0,0.28);
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 66px;
+    background: var(--navbar-background);
+    color: var(--navbar-text-color);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 120px;
+    border-bottom: 1.5px solid var(--navbar-border);
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+    flex-direction: row-reverse;
+}
+
+.navbar__logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    color: var(--navbar-text-color);
+    margin-right: 60px;
+}
+
+.navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 96px;
+}
+
+.navbar__item,
+.navbar__profile {
+    list-style: none;
+    position: relative;
+    color: var(--navbar-text-color);
+    font-weight: 500;
+    font-size: 1.08rem;
+    letter-spacing: 0.5px;
+    transition: color var(--transition-speed), border-bottom var(--transition-speed);
+    cursor: pointer;
+    padding: 8px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.navbar__item:hover,
+.navbar__profile:hover,
+.navbar__item:focus-within,
+.navbar__profile:focus-within {
+    color: var(--navbar-hover-color);
+    border-bottom: 2px solid var(--navbar-hover-color);
+}
+
+.navbar__item a,
+.navbar__profile a {
+    color: inherit;
+    transition: color var(--transition-speed);
+}
+
+.navbar__profile {
+    position: relative;
+    min-width: 64px;
+    user-select: none;
+}
+
+.dropdown {
+    position: absolute;
+    top: 36px;
+    right: 0;
+    min-width: 180px;
+    background: var(--dropdown-bg);
+    border: 1px solid var(--dropdown-border);
+    border-radius: 7px;
+    box-shadow: var(--shadow);
+    padding: 10px 0;
+    z-index: 1020;
+    display: none;
+    flex-direction: column;
+    animation: dropdownIn 0.34s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes dropdownIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-16px) scale(.985);
+    }
+    98% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+.navbar__profile:hover .dropdown,
+.navbar__profile:focus-within .dropdown,
+.navbar__profile .dropdown.show {
+    display: flex;
+}
+
+.dropdown__item {
+    padding: 10px 22px;
+    color: var(--navbar-text-color);
+    font-size: 0.98rem;
+    border: none;
+    background: none;
+    transition: background var(--transition-speed), color var(--transition-speed);
+    cursor: pointer;
+    text-align: left;
+}
+
+.dropdown__item a,
+.dropdown__item button {
+    color: inherit;
+    width: 100%;
+    display: block;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    text-align: left;
+    padding: 0;
+}
+
+.dropdown__item:hover,
+.dropdown__item:focus {
+    background: var(--dropdown-hover-bg);
+    color: var(--navbar-hover-color);
+}
+
+.dropdown__item:not(:last-child) {
+    border-bottom: 1px solid var(--navbar-border);
+}
+
+.navbar__toggle {
+    display: none;
+}
+
+@media (min-width: 900px) {
+    .navbar {
+        padding: 0 150px;
+    }
+    .navbar__links {
+        gap: 128px;
+    }
+}
+
+.navbar__item.active,
+.navbar__profile.active {
+    border-bottom: 2px solid var(--navbar-hover-color);
+    color: var(--navbar-hover-color);
+}
+
+.navbar *,
+.dropdown * {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.navbar__profile:focus,
+.dropdown__item:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
