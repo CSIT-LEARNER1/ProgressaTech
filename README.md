@@ -1,4 +1,5 @@
 ## Website Overview
+The rental website offers role-based access with Firebase Authentication, allowing users to register as renters or vendors. Vendors manage products, while renters browse and rent items, with secure role data stored in Firestore.
 
 The rental website includes a structured navigation bar with the following main sections:
 
